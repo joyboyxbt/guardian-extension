@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Guardian Extension Setup</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Guardian Extension Setup</h1>
+  <section id="extension-id">
+    <h2>Guard Extension ID</h2>
+    <input type="text" id="ext-id-input" placeholder="Extension ID to guard">
+    <a href="https://your-gitbook-link.com" target="_blank" id="ext-id-help">How to find your extension ID</a>
+  </section>
+  <div id="mode-selection">
+    <label><input type="radio" name="mode" value="custom" id="mode-custom"> Manually approve & block</label><br>
+    <label><input type="radio" name="mode" value="preset" id="mode-preset"> Pre-selected allowlist (coming soon)</label>
+  </div>
+  <section id="preset-section">
+    <p>Pre-selected allowlist coming soon: default safe sections of sites.</p>
+  </section>
+  <section id="custom-section">
+    <section id="origins">
+      <h2>Allowed Origins</h2>
+      <ul id="allowed-origins-list"></ul>
+      <div id="add-origin">
+        <input type="text" id="new-origin-input" placeholder="https://example.com/*">
+        <button id="add-origin-button">Add</button>
+      </div>
+    </section>
+    <section id="blacklist">
+      <h2>Blacklisted Origins</h2>
+      <ul id="blacklist-origins-list"></ul>
+      <div id="add-blacklist">
+        <input type="text" id="new-blacklist-input" placeholder="https://mail.example.com/*">
+        <button id="add-blacklist-button">Add</button>
+      </div>
+    </section>
+  </section>
+  <button id="save-button">Finish Setup</button>
+  <script src="options.js"></script>
+</body>
+</html>

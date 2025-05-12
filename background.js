@@ -1,6 +1,13 @@
 // == Guardian Background Script ==
 // Monitors network requests from an untrusted extension and logs events.
 
+// Open the setup page on first install
+chrome.runtime.onInstalled.addListener(details => {
+  if (details.reason === 'install') {
+    chrome.runtime.openOptionsPage();
+  }
+});
+
 // Load the guarded extension ID from storage
 let badExtId = '';
 chrome.storage.local.get('badExtId', data => {
