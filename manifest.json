@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Guardian Extension",
+  "version": "1.0",
+  "description": "Blocks untrusted extension requests outside approved domains; provides UI to manage settings and logs.",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "management",
+    "storage",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_title": "Guardian Settings",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

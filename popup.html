@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Guardian Settings</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Guardian Extension</h1>
+  <!-- Extension ID Input -->
+  <section id="extension-id">
+    <h2>Guard Extension ID</h2>
+    <input type="text" id="ext-id-input" placeholder="Extension ID to guard">
+    <a href="https://your-gitbook-link.com" target="_blank" id="ext-id-help">How to find your extension ID</a>
+  </section>
+  <!-- Blacklist Configuration -->
+  <section id="blacklist">
+    <h2>Blacklisted Origins</h2>
+    <ul id="blacklist-origins-list"></ul>
+    <div id="add-blacklist">
+      <input type="text" id="new-blacklist-input" placeholder="https://mail.example.com/*">
+      <button id="add-blacklist-button">Add</button>
+    </div>
+  </section>
+  <!-- Mode Selection -->
+  <div id="mode-selection">
+    <label><input type="radio" name="mode" value="preset" id="mode-preset"> Pre-selected allowlist (coming soon)</label><br>
+    <label><input type="radio" name="mode" value="custom" id="mode-custom"> Custom allowlist & blacklist</label>
+  </div>
+  <!-- Preset Allowlist Placeholder -->
+  <section id="preset-section">
+    <p>Pre-selected allowlist coming soon: includes default safe sections of sites to ensure privacy and security.</p>
+  </section>
+  <!-- Custom Configuration -->
+  <div id="custom-section">
+  <section id="origins">
+    <h2>Allowed Origins</h2>
+    <ul id="allowed-origins-list"></ul>
+    <div id="add-origin">
+      <input type="text" id="new-origin-input" placeholder="https://example.com/*">
+      <button id="add-origin-button">Add</button>
+    </div>
+  </section>
+  <section id="logs">
+    <h2>Request Log</h2>
+    <button id="allow-all-blocked-button">Allow All Blocked</button>
+    <button id="clear-log-button">Clear Log</button>
+    <ul id="request-log-list"></ul>
+  </section>
+  </div> <!-- end custom-section -->
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, sans-serif;
+  width: 320px;
+  padding: 10px;
+}
+h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+section {
+  margin-bottom: 15px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+li {
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+  font-size: 12px;
+}
+ #add-origin {
+  margin-top: 5px;
+}
+#new-origin-input {
+  width: calc(100% - 60px);
+  padding: 4px;
+}
+button {
+  padding: 4px 8px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+button#clear-log-button {
+  margin-bottom: 5px;
+}
