@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle (dark default / light on click)
+  const themeKey = 'theme';
+  const themeToggle = document.getElementById('theme-toggle');
+  function applyTheme(theme) {
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
+    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+  }
+  chrome.storage.local.get(themeKey, data => {
+    const theme = data[themeKey] || 'dark';
+    applyTheme(theme);
+  });
+  themeToggle.addEventListener('click', () => {
+    chrome.storage.local.get(themeKey, data => {
+      const current = data[themeKey] || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      chrome.storage.local.set({ [themeKey]: next }, () => applyTheme(next));
+    });
+  });
+
   const extIdKey = 'badExtId';
   const modeKey = 'mode';
   const originsKey = 'allowedOrigins';

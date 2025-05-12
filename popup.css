@@ -1,3 +1,21 @@
+/* Theme styles */
+body.dark {
+  background-color: #2e2e2e;
+  color: #eee;
+}
+body.light {
+  background-color: #fff;
+  color: #333;
+}
+
+.theme-toggle {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: inherit;
+}
 body {
   font-family: Arial, sans-serif;
   width: 320px;
