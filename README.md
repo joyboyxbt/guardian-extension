@@ -1,34 +1,65 @@
 # Guardian Extension
 
-A lightweight browser extension that monitors network requests made by an untrusted extension. If the untrusted extension tries to contact any site outside your approved whitelist, it automatically disables it. You can manage settings and view logs via the extension’s toolbar menu.
+A lightweight browser extension that monitors and controls the network behavior of another “guarded” extension. It enforces a whitelist/blacklist of domains, auto-disables on credential entry, and provides a GUI for managing settings and logs.
 
-## Setup
+## Features
 
-1. Clone or download this `guardian-extension` folder.
-2. Open your browser’s extensions page:
-   - Chrome: `chrome://extensions`
-   - Firefox: `about:debugging#/runtime/this-firefox`
-3. Enable Developer Mode (Chrome) or click **Load Temporary Add-on** (Firefox).
-4. Click **Load unpacked** (Chrome) or **Select File** (Firefox) and choose the `guardian-extension` folder.
-5. In `background.js`, replace `<TARGET_EXTENSION_ID>` with the ID of the extension you want to guard.
-6. Click the Guardian extension icon in the browser toolbar to open the settings menu:
-   - **Allowed Origins**: Add or remove URL patterns (e.g., `https://memecope.com/*`) to control which sites the untrusted extension may contact.
-   - **Request Log**: View a history of requests from the guarded extension, including blocked, allowed, and credential events.
-   - **Clear Log**: Reset the request history.
+- Domain allowlist and blocklist
+- Auto-disable on whitelist violation
+- Auto-disable on credential input
+- GUI popup for managing extension ID, allowlist, blocklist, and viewing logs
+- One-click “Allow All Blocked” to add blocked domains to allowlist
+- Compatible with Chrome, Firefox, and other Chromium-based browsers
 
-## How It Works
+## Installation
 
-- **Network Guard**: Intercepts every request from the specified extension and blocks any to a URL not on your allowlist.
-- **Credential Safeguard**: When you type usernames or passwords on allowed pages, the extension auto-disables the untrusted extension to protect your credentials.
-- **GUI**: A simple, user-friendly popup lets you manage settings and review logs without editing code.
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/joyboyxbt/guardian-extension.git
+   ```
+2. Load as an unpacked/temporary extension:
+   - Chrome/Brave/Edge/Arc: `chrome://extensions` → Enable “Developer mode” → “Load unpacked” → select `guardian-extension/manifest.json`
+   - Firefox: `about:debugging#/runtime/this-firefox` → “Load Temporary Add-on” → select `manifest.json`
 
-## Customization
+## Configuration
 
-- Use `*` as a wildcard in URL patterns, e.g., `https://*.example.com/*`.
-- The log in storage is capped at 200 entries; older entries are dropped.
+### Guarded Extension ID
 
-## Limitations
+Enter the extension ID to monitor. Find IDs:
+- Chrome/Brave/Edge/Arc: `chrome://extensions` → Details → “ID”
+- Firefox: `about:debugging#/runtime/this-firefox`
 
-- Only network and credential-based safeguards.
-- Does not prevent other non-network-based malicious behavior.
-- Relies on browser extension APIs; cannot guard the extension’s on-disk files.
+### Modes
+
+- **Pre-selected allowlist** (coming soon): default safe sections.
+- **Custom allowlist & blacklist**: granular control.
+
+### Allowed Origins
+
+List of URL patterns. Wildcards supported, e.g., `https://*.example.com/*`.
+
+### Blacklisted Origins
+
+Explicitly block subdomains even if the parent domain is allowed.
+
+### “Allow All Blocked”
+
+Add all currently blocked domains to allowlist in one click.
+
+## Usage
+
+1. Click the Guardian icon in your toolbar.
+2. Enter the target extension’s ID, choose **Custom** mode.
+3. Manage **Allowed Origins** and **Blacklisted Origins**.
+4. View the **Request Log** for events (allowed, blocked, blacklisted, credentials).
+5. Use **Clear Log** or **Allow All Blocked** as needed.
+
+## Contributing
+
+> Coming soon: GitBook with detailed setup and extension ID lookup guides for Chrome, Firefox, Edge, Brave, Arc, and other Chromium-based browsers.
+
+Feel free to file issues or pull requests!
+
+---
+
+*Note: This project uses Manifest V2. Consider upgrading to Manifest V3 in the future.*
